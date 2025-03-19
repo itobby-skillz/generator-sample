@@ -67,7 +67,7 @@
                         <class>org.example.Main</class>
                     </excludeClasses>
                     <outputKind>module</outputKind>
-                    <outputFile>${project.build.directory}/generated-sources/types.d.ts</outputFile>
+                    <outputFile>${project.build.directory}/generated-sources/types_maven.d.ts</outputFile>
                 </configuration>
             </plugin>
         </plugins>

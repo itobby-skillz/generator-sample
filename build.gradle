@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'cz.habarta.typescript-generator' version '3.2.1263'
+}
+
+group = "org.example"
+version = "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("com.fasterxml.jackson.core:jackson-annotations:2.13.4")
+}
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
+}
+
+generateTypeScript {
+    jsonLibrary = 'jackson2'
+    // classes = [
+    //     'org.example.User'
+    // ]
+    classPatterns = [
+        'org.example.*'
+    ]
+    excludeClasses = [
+        'org.example.Main'
+    ]
+    outputKind = 'module'
+    outputFile = "target/generated-sources/types_gradle.d.ts"
+}
+
+build.dependsOn generateTypeScript
